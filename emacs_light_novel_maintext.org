@@ -1,0 +1,1949 @@
+#+TITLE: 新人エンジニア、オッサン無双エンジニアから伝説のツールEmacsを学び無双する
+#+SUBTITLE: 小悪魔ギャル新人、バッファを開けば世界が変わる
+#+AUTHOR: OpenAI
+#+LANGUAGE: ja
+#+OPTIONS: toc:2 num:nil
+#+STARTUP: overview
+
+* まえがき
+
+これは、Emacs を知っている人向けの物語ではない。
+
+むしろ逆だ。
+
+Git の `add` と `commit` と `branch` の違いで指が止まる人。Docker の赤いログを見ると、心臓が一瞬止まる人。Slack の通知が鳴るたび、何かを責められているように感じる人。Notion に綺麗なメモを書こうとして、結局何も書けなくなる人。ターミナルにコマンドを打つたび「これで壊れないよね？」と不安になる人。
+
+そういう人のための話だ。
+
+主人公は天城ミオ。二十三歳。小悪魔みたいな笑みを浮かべる、少しギャルっぽい新人エンジニア。
+
+見た目は強そうだ。口も軽い。先輩にもわりと遠慮なく突っ込む。
+
+でも中身は、普通に焦る。普通に怖い。普通に分からない。普通に「わたし、この仕事向いてないかも」と思う。
+
+彼女が配属されたのは、月額課金型のタスク管理サービスを作る開発チーム。
+
+Next.js。TypeScript。Node.js。PostgreSQL。Redis。Docker。GitHub Actions。Slack。Sentry。Datadog。
+
+今風のスタックが並んでいる。だが現場は、そんなに綺麗ではない。
+
+通知は飛ぶ。PR は溜まる。テストは落ちる。DB は遅い。Docker は起動しない。手順書は古い。本番は金曜の夜に燃える。
+
+そこに現れるのが、牧野源次郎。
+
+黒いシャツ。白髪まじりの髪。眼鏡。少し無精ひげ。社内で「オッサン無双エンジニア」と呼ばれている男。
+
+彼の武器は、伝説のツール Emacs。
+
+ただしこの物語は、「古いエディタすごい」と言うだけの話ではない。
+
+Emacs を使うと、なぜ仕事が速くなるのか。Magit を使うと、なぜ Git が怖くなくなるのか。org-mode を使うと、なぜタスクとメモとコードと結果が一つの流れになるのか。文学プログラミングを使うと、なぜ手順書が「読まれない紙」から「実行できる説明」になるのか。
+
+その気持ちよさを、物語として書く。
+
+* 第一章 Slackが鳴り止まない月曜日
+
+月曜の朝九時七分。
+
+天城ミオの MacBook は、ログインした瞬間に鳴いた。
+
+Slack。Gmail。GitHub。Notion。Google Calendar。Jira。Sentry。Datadog。
+
+通知が重なりすぎて、画面の右上が小さな花火大会みたいになっている。
+
+「いや、朝から治安わる……」
+
+ミオはマグカップを置き、Slack を開いた。
+
+#+begin_example
+@ミオ さん
+この PR 今日中にレビューお願いできますか？
+
+@ミオ
+ログイン画面が昨日から遅いかもです
+
+ミオちゃん
+Docker 起動しない人がいるから見てあげて
+
+天城さん
+昼会議の議事録お願いできます？
+
+あとユーザー問い合わせのログも見てください
+#+end_example
+
+「待って待って待って。わたし、まだ椅子に座って七分なんですけど？」
+
+誰にも聞こえない声で言ったつもりだった。だが、隣の席の沢渡が振り向いた。
+
+「大丈夫。最初の一週間はそんなもん」
+
+「全然大丈夫じゃないです」
+
+「二週間目から慣れる」
+
+「慣れたくない種類の地獄なんですけど」
+
+ミオは笑って誤魔化したが、内心は焦っていた。
+
+PR。ログイン画面。Docker。議事録。問い合わせログ。
+
+一つ一つなら、たぶんなんとかなる。でも全部が同時に来ると、何から触ればいいのか分からない。
+
+ブラウザのタブはすでに十二個開いている。Slack のスレッドは三つ。GitHub の Pull Request は二つ。Notion の仕様書はどれが最新版か分からない。ターミナルは昨日の作業ディレクトリのまま。
+
+ミオは何かを開いては閉じ、別のタブを開いては、また Slack に戻った。
+
+その動きには、仕事をしている感触がある。しかし一分後、何も進んでいないことに気づく。
+
+「あ、これやばいやつだ」
+
+胸の奥が重くなる。
+
+わたし、もしかして開発現場向いてない？
+
+そう思いかけた時、低い声がした。
+
+「通知を全部見ようとするな。死ぬぞ」
+
+ミオは振り返った。
+
+窓際の席。黒いシャツの中年エンジニアが立っていた。
+
+白髪まじりの黒髪。細いフレームの眼鏡。少し無精ひげ。表情は穏やかだが、妙に空気が動かない。
+
+「誰です？」
+
+「牧野源次郎」
+
+近くの先輩が小声で言った。
+
+「社内のラスボス」
+
+別の先輩が言った。
+
+「味方側のラスボス」
+
+さらに別の先輩が言った。
+
+「オッサン無双エンジニア」
+
+ミオは目を細めた。
+
+「情報量多いな」
+
+牧野はミオの画面を覗いた。
+
+Slack。GitHub。Notion。ブラウザタブ。ターミナル。未読メール。
+
+「今のお前の問題は、技術力不足じゃない」
+
+「え？」
+
+「仕事が、まだ形になっていない」
+
+「形？」
+
+「そう。頭の中に、未分類の通知がそのまま突っ込まれてる。だから苦しい」
+
+牧野は自分の席からノートPCを持ってきた。画面には、黒いエディタが開いている。
+
+Emacs。
+
+ミオは名前だけ知っていた。
+
+「古のエディタですよね？」
+
+「そうだ」
+
+「まだ使ってる人いるんだ」
+
+「目の前にいる」
+
+「強めの証拠だ」
+
+牧野はキーボードを叩いた。空のバッファに、たった一行を入力する。
+
+#+begin_src org
+* Inbox
+#+end_src
+
+「ここに全部入れろ」
+
+「全部？」
+
+「Slack で来たこと。メール。PR。議事録。Docker。ログ。今は分類しなくていい。綺麗に書こうとするな」
+
+「雑でいいんですか？」
+
+「最初は雑じゃないと書けない」
+
+ミオは自分の Emacs を開かされた。正直、画面は地味だった。VS Code のように親切ではない。ボタンも少ない。何が起きているのか、よく分からない。
+
+でも、牧野は何も急かさなかった。
+
+「今来てる仕事を、一つずつ見出しにしろ」
+
+ミオは打った。
+
+#+begin_src org
+* Inbox
+** TODO PR #421 のレビュー
+** TODO ログイン画面が遅い件
+** TODO Docker が起動しない人の確認
+** TODO ユーザー問い合わせのログを見る
+** TODO 昼会議の議事録
+#+end_src
+
+たった五行。
+
+それだけなのに、胸の圧が少し抜けた。
+
+「あれ」
+
+「どうした」
+
+「まだ何も終わってないのに、ちょっと楽になりました」
+
+「それが最初の勝ちだ」
+
+牧野は言った。
+
+「問題は、解く前に置き場所が要る。置き場所がない問題は、頭の中を歩き回る」
+
+ミオは黒いバッファを見た。
+
+Slack の通知はまだ赤い。GitHub の PR も消えていない。Docker の問題も解けていない。
+
+でも、頭の中で暴れていたものは、外に出た。
+
+「Emacs って、コードを書くための道具じゃないんですか？」
+
+「コードも書く。メモも書く。ログも貼る。コマンドも動かす。結果も残す」
+
+「何でも置くんですね」
+
+「作業台だからな」
+
+「作業台」
+
+「そう。Emacs は、お前の頭の外に作る作業台だ」
+
+その言葉は、ミオの中に残った。
+
+作業台。
+
+今まで彼女は、仕事を全部頭の中で持とうとしていた。だから通知が来るたびに、机の上へ乱暴に書類を投げ込まれるみたいだった。
+
+でもバッファに置けばいい。見出しにすればいい。TODO にすればいい。
+
+仕事はまだ多い。だが、触れる形になった。
+
+その日の昼前、ミオは初めて思った。
+
+もしかして、わたしが弱いんじゃない。仕事の置き方を知らなかっただけなのかも。
+
+* 第二章 TODOは魔法じゃない、状態だ
+
+翌日の Inbox は、さらに増えていた。
+
+#+begin_src org
+* Inbox
+** TODO PR #421 のレビュー
+** TODO ログイン画面が遅い件
+** TODO Docker が起動しない人の確認
+** TODO ユーザー問い合わせのログを見る
+** TODO 昼会議の議事録
+** TODO 料金画面の文言差し替え
+** TODO GitHub Actions の失敗確認
+** TODO PostgreSQL の slow query を見る
+** TODO 夕方の進捗共有
+#+end_src
+
+ミオは画面を見て、椅子に沈んだ。
+
+「増えてる……」
+
+牧野は後ろでコーヒーを飲んでいた。
+
+「仕事は増える」
+
+「救いがない」
+
+「救いはある。状態を付けろ」
+
+「状態？」
+
+牧野はミオの org ファイルの上に一行足した。
+
+#+begin_src org
+#+TODO: TODO DOING WAIT REVIEW DONE CANCELLED
+#+end_src
+
+「TODO は未着手。DOING は作業中。WAIT は誰か待ち。REVIEW は確認待ち。DONE は完了。CANCELLED は中止」
+
+「普通の TODO リストと違うんですか？」
+
+「全然違う」
+
+牧野はミオのタスクを見ながら、状態を変えていった。
+
+#+begin_src org
+* Inbox
+** REVIEW PR #421 のレビュー
+** DOING ログイン画面が遅い件
+** WAIT Docker が起動しない人の確認
+   - 環境情報待ち
+** TODO ユーザー問い合わせのログを見る
+** DONE 昼会議の議事録
+** TODO 料金画面の文言差し替え
+** TODO GitHub Actions の失敗確認
+** TODO PostgreSQL の slow query を見る
+#+end_src
+
+「見え方、変わっただろ」
+
+ミオは黙って画面を見た。
+
+確かに違う。
+
+さっきまでは全部が「終わってないもの」だった。今は違う。
+
+レビュー中。作業中。相手待ち。未着手。完了。
+
+それぞれが別の顔をしている。
+
+「今まで、全部 “まだやってない” の箱に入れてました」
+
+「それが頭を疲れさせる」
+
+「WAIT って、かなり救いですね。自分が止めてるわけじゃないって分かる」
+
+「そうだ。人間は、自分が握ってないボールまで握ってる気になりがちだ」
+
+ミオは Docker の件を WAIT にした瞬間、少しだけ罪悪感が消えた。
+
+彼女はまだ解いていない。でも、相手からログをもらわないと進めない。ならば、それは「今すぐ自分が頑張る問題」ではない。
+
+「状態って、大事ですね」
+
+「タスクは文字列じゃない。状態を持つデータだ」
+
+「出た、データ」
+
+「難しく考えなくていい。仕事に札を貼るだけだ」
+
+ミオは午前中、org-agenda も教わった。
+
+#+begin_src org
+* TODO GitHub Actions の失敗確認
+  SCHEDULED: <2026-05-10 Sun 13:00>
+
+* TODO PostgreSQL の slow query を見る
+  DEADLINE: <2026-05-10 Sun 17:00>
+#+end_src
+
+agenda を開くと、今日やることが時間軸で並んだ。
+
+#+begin_example
+Today
+  13:00 TODO GitHub Actions の失敗確認
+  17:00 TODO PostgreSQL の slow query を見る
+#+end_example
+
+ミオは思わず声を出した。
+
+「今日が見える」
+
+「そうだ」
+
+「カレンダーとも違うし、タスク管理アプリとも違う。なんか、自分の作業用の地図って感じ」
+
+「それでいい。agenda は、昨日までの自分が今日の自分に渡す地図だ」
+
+「牧野さん、たまにラノベの師匠みたいなこと言いますよね」
+
+「職業病だ」
+
+「どんな職業病？」
+
+「炎上現場で若者を生かして帰す仕事」
+
+ミオは笑った。
+
+その日の夕方。彼女は初めて、DONE を三つ付けた。
+
+#+begin_src org
+** DONE 昼会議の議事録
+** DONE 料金画面の文言差し替え
+** DONE GitHub Actions の失敗確認
+#+end_src
+
+画面上で TODO が DONE に変わる。
+
+ただそれだけなのに、心が少し軽くなる。
+
+人間は、終わったことをすぐ忘れる。でも org は忘れない。
+
+今日、何もできなかった気がする日でも、DONE を見ると分かる。
+
+ちゃんと進んでいる。
+
+ミオはその日、帰る前に小さくつぶやいた。
+
+「TODO って、仕事に名前と状態をあげることなんだ」
+
+牧野は聞こえていたのか、聞こえていなかったのか、ただコーヒーを飲んでいた。
+
+* 第三章 MagitはGitを一文字にする
+
+水曜日。
+
+ミオの前に、初めての Pull Request レビューが降ってきた。
+
+GitHub の画面には、差分が長々と表示されている。変更ファイルは二十七個。コメントは十三個。CI は一つ失敗。しかもブランチ名が長い。
+
+#+begin_example
+feature/fix-login-redirect-and-session-cache
+#+end_example
+
+「これ、ブラウザで全部見ればいいんですか？」
+
+「見てもいい」
+
+牧野は言った。
+
+「だが、お前はたぶん途中で迷子になる」
+
+「もうなりかけてます」
+
+GitHub の画面は便利だ。会話できる。コメントできる。レビューできる。
+
+でも、差分を読んでいるうちに、ミオはどのファイルを見ていたのか分からなくなっていた。別ファイルに飛ぶ。コメントを見る。CI のログを見る。また差分に戻る。途中で Slack が鳴る。戻ると、どこまで読んだか忘れている。
+
+「Git はまず、手元で触れ」
+
+牧野は Emacs で Magit を起動した。
+
+#+begin_example
+M-x magit-status
+#+end_example
+
+画面に Git の状態が現れる。
+
+#+begin_example
+Head:     main
+Merge:    origin/main
+Untracked files
+Modified files
+Recent commits
+#+end_example
+
+「これが Magit status。Git の作業場全体を見る画面だ」
+
+「GitHub の画面と違って、手元の状態が見えるんですね」
+
+「そう。ここから branch、stage、commit、push、pull、diff、log、だいたい全部できる」
+
+ミオはまだ半信半疑だった。
+
+「でもコマンドラインでもできますよね？」
+
+「できる。じゃあやってみろ」
+
+牧野はターミナルを開いた。
+
+「新しい作業ブランチを切って、修正ファイルを確認して、必要なファイルだけ add して、commit して、push。コマンドラインで打つなら？」
+
+ミオは考えた。
+
+#+begin_src sh
+git status
+git switch -c fix-login-delay
+git status
+git add src/app/login/page.tsx
+git add src/lib/session.ts
+git commit -m "Fix login delay"
+git push origin fix-login-delay
+#+end_src
+
+「こんな感じ……ですかね」
+
+「悪くない。でも実際はこうなる」
+
+牧野はターミナルに打つふりをした。
+
+#+begin_src sh
+git checkout -b fix-login-delay
+#+end_src
+
+「checkout だっけ、switch だっけ、となる」
+
+ミオはうなずいた。
+
+#+begin_src sh
+git add .
+#+end_src
+
+「面倒になって全部 add する」
+
+「ある」
+
+#+begin_src sh
+git commit -am "fix"
+#+end_src
+
+「tracked files しか入らないのを忘れる」
+
+「それもある」
+
+#+begin_src sh
+git push
+#+end_src
+
+「upstream がなくて怒られる」
+
+「めちゃくちゃある！」
+
+ミオは机を叩いた。
+
+「Git、細かいところで毎回こっちの気力を削ってくるんですよ！」
+
+「それを Magit は一文字で済ませる」
+
+牧野は Magit の画面に戻った。
+
+「ブランチを切るなら、まず `b`」
+
+#+begin_example
+b
+#+end_example
+
+Magit の下部にブランチ操作メニューが出る。
+
+「新規ブランチなら、また `b`」
+
+#+begin_example
+b b
+#+end_example
+
+「名前を入れる」
+
+#+begin_example
+fix-login-delay
+#+end_example
+
+「終わり」
+
+「え、今のでブランチ切れたんですか？」
+
+「切れた」
+
+「git switch -c 打ってない」
+
+「打ってない」
+
+「ちょっとズルい」
+
+「次。差分を見るなら、ファイルにカーソルを置いて `TAB`」
+
+#+begin_example
+TAB
+#+end_example
+
+差分が開く。
+
+「変更を stage するなら `s`」
+
+#+begin_example
+s
+#+end_example
+
+「unstage は `u`」
+
+#+begin_example
+u
+#+end_example
+
+「commit は `c c`」
+
+#+begin_example
+c c
+#+end_example
+
+コミットメッセージを書くバッファが開く。
+
+「保存して閉じれば commit」
+
+「え、git commit -m じゃないんですか？」
+
+「長いメッセージも普通に書ける。見出しと本文を分けられる。typo も編集しやすい」
+
+「CLI の commit メッセージでミスると、地味に萎えるんですよね」
+
+「Magit ならエディタで書く。エディタの中だからな」
+
+「そりゃそうだけど、そりゃそうすぎて強い」
+
+「push は `P p`」
+
+#+begin_example
+P p
+#+end_example
+
+「pull は `F p`」
+
+#+begin_example
+F p
+#+end_example
+
+「log は `l l`」
+
+#+begin_example
+l l
+#+end_example
+
+「diff は `d d`」
+
+#+begin_example
+d d
+#+end_example
+
+ミオは呆然とした。
+
+「Git コマンドを覚えなくていいってことですか？」
+
+「違う」
+
+牧野は即座に言った。
+
+「Git の概念は覚えろ。branch、stage、commit、push、pull、merge、rebase。これは理解しろ」
+
+「はい」
+
+「だが、毎回長いコマンドを手で打つ必要はない」
+
+そこがミオには刺さった。
+
+彼女が Git を嫌っていた理由は、概念だけではない。コマンドの細部で何度も不安になるからだ。
+
+今どの branch だっけ。add したっけ。commit したっけ。push 先どこだっけ。このファイル入れていいんだっけ。`git commit -am` で untracked file 入らないんだっけ。
+
+Magit の画面では、それが見える。
+
+ファイルが unstaged にある。`s` を押すと staged に移る。`u` を押すと戻る。commit すると消える。push すると upstream に乗る。
+
+画面の中で、状態が動く。
+
+「これ、Git が見える……」
+
+「そうだ」
+
+「CLI だと、毎回コマンドを思い出して、結果を読んで、頭の中で状態を組み立ててました」
+
+「Magit は、その状態を画面に出す」
+
+「だから速いんだ」
+
+ミオは初めて納得した。
+
+Magit が速いのは、単にキー操作が短いからではない。もちろん、一文字で stage できるのは速い。`c c` で commit できるのも速い。`P p` で push できるのも速い。
+
+でも本当に速いのは、迷わないからだ。
+
+今どこにいるか。何が staged か。何が unstaged か。どの branch か。何を commit するか。
+
+全部が見える。
+
+ミオは自分の作業ブランチを切った。
+
+#+begin_example
+b b fix-login-delay
+#+end_example
+
+差分を開く。
+
+#+begin_example
+TAB
+#+end_example
+
+必要なファイルだけ stage する。
+
+#+begin_example
+s
+#+end_example
+
+commit する。
+
+#+begin_example
+c c
+#+end_example
+
+メッセージを書く。
+
+#+begin_example
+Fix login delay by avoiding duplicate session fetch
+
+The login page fetched session data in both the server and client layer.
+This change keeps session fetching on the server side and passes the
+minimal user state to the client component.
+#+end_example
+
+保存して閉じる。
+
+push。
+
+#+begin_example
+P p
+#+end_example
+
+GitHub に PR が上がる。
+
+ミオは椅子の背にもたれた。
+
+「速い……」
+
+牧野は言った。
+
+「`git commit -am` を手で打つより速いだろ」
+
+「速いどころじゃないです。怖くない」
+
+「そこだ」
+
+「コマンドを間違えてないか不安になる時間が消える」
+
+「Magit は Git を隠してない。むしろ見えるようにしている」
+
+ミオは画面を見た。
+
+Git が、初めて少しだけ好きになった。
+
+その日の午後、彼女は PR のレビューも Magit で読んだ。差分を開き、ファイル単位で確認し、気になる箇所を org にメモする。
+
+#+begin_src org
+* PR #421 review
+** 観察
+- ログイン後の redirect 処理が二重に走っている
+- session fetch が Server Component と Client Component の両方にある
+- loading 表示の終了条件が曖昧
+
+** 仮説
+- duplicate fetch によりログイン後の表示が遅く見えている
+
+** 提案
+- session fetch を server side に寄せる
+- client には必要最小限の user state だけ渡す
+#+end_src
+
+レビューコメントは自然に書けた。
+
+#+begin_example
+観察:
+ログイン後の session fetch が server/client の両方で発生しています。
+
+仮説:
+このため、ログイン直後の loading が長く見えている可能性があります。
+
+提案:
+session fetch を server side に寄せ、client 側では表示状態のみ扱う形にすると整理できそうです。
+#+end_example
+
+PR の作者から返信が来る。
+
+#+begin_example
+レビュー分かりやすいです。修正します。
+#+end_example
+
+ミオは小さく拳を握った。
+
+Magit は速い。でも、それ以上に、Git の恐怖を削ってくれる。
+
+それが、初心者にとって一番大きかった。
+
+#+CAPTION: 挿絵：伝説のツールEmacsの最初のレッスン
+[[file:illust1.png]]
+
+* 第四章 Dockerは怒っていない、ただログを出している
+
+木曜日の午後。
+
+「ミオさん、Docker 起動しません！」
+
+新しく入ったインターンの八代ひなが、泣きそうな顔でやってきた。
+
+「何が出てる？」
+
+「赤いやつがいっぱい出てます」
+
+ミオは一瞬、昨日までの自分を見た気がした。
+
+赤いやつ。分かる。ターミナルの赤いログは、怒られているように見える。英語で長々と出る。しかも、どこが重要なのか分からない。
+
+牧野が後ろから言った。
+
+「赤い、では何も分からない。だが、赤いと怖いのは分かる」
+
+「分かるんですか？」
+
+「分かる。昔は俺も怖かった」
+
+「意外」
+
+「人間はログに慣れる前、ログを呪文だと思う」
+
+ミオは Emacs の `vterm` を開いた。
+
+#+begin_src sh
+docker compose up
+#+end_src
+
+ログが流れる。
+
+#+begin_example
+app-1  | Error: connect ECONNREFUSED 127.0.0.1:5432
+app-1  |     at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1494:16)
+app-1 exited with code 1
+#+end_example
+
+八代が縮こまる。
+
+「ほら、赤いです……」
+
+「赤いけど、怒ってない」
+
+ミオは org に見出しを切った。
+
+#+begin_src org
+* Docker 起動しない問題
+** 事象
+- docker compose up で app コンテナが落ちる
+
+** ログ
+#+end_src
+
+そこにログを貼る。
+
+#+begin_src org
+#+begin_example
+Error: connect ECONNREFUSED 127.0.0.1:5432
+#+end_example
+#+end_src
+
+「ここで見るのは一行です」
+
+ミオは指差した。
+
+#+begin_example
+ECONNREFUSED 127.0.0.1:5432
+#+end_example
+
+「5432 は PostgreSQL のポート。つまり app が DB に接続しようとして拒否されてる」
+
+「DB が死んでるってことですか？」
+
+「可能性はある。でも決めつけない」
+
+ミオは org に仮説を書く。
+
+#+begin_src org
+** 仮説
+- DB コンテナが起動していない
+- DB は起動しているが、接続先 host が間違っている
+- 環境変数 DATABASE_URL がローカル用のまま
+#+end_src
+
+確認する。
+
+#+begin_src sh
+docker compose ps
+#+end_src
+
+DB コンテナは起動している。
+
+#+begin_example
+db-1     running
+app-1    exited
+#+end_example
+
+「DB は生きてる」
+
+次に `.env` を見る。
+
+#+begin_example
+DATABASE_URL=postgres://app:secret@127.0.0.1:5432/app
+#+end_example
+
+ミオは「あ」と声を出した。
+
+「これだ」
+
+八代は首を傾げる。
+
+「何がですか？」
+
+「Docker の中から見た 127.0.0.1 は、自分自身なの。Mac の localhost じゃない」
+
+「えっ、localhost っていつも自分なんですか？」
+
+「そう。コンテナの中で localhost と言ったら、そのコンテナ自身」
+
+ミオは書き換えた。
+
+#+begin_example
+DATABASE_URL=postgres://app:secret@db:5432/app
+#+end_example
+
+「compose の service 名が `db` だから、app からは `db` で見る」
+
+再起動。
+
+#+begin_src sh
+docker compose up
+#+end_src
+
+今度はログイン画面が表示された。
+
+八代が叫んだ。
+
+「出ました！」
+
+「出たね」
+
+「すごい！ Docker 倒した！」
+
+「倒してない。話を聞いた」
+
+ミオは org の最後に結論を書く。
+
+#+begin_src org
+** 結論
+Docker Compose 内の app コンテナから PostgreSQL へ接続する場合、
+localhost / 127.0.0.1 ではなく service 名 db を使う。
+
+** 次に同じ問題が出たら
+- docker compose ps で DB コンテナが起動しているか確認
+- DATABASE_URL の host が db になっているか確認
+#+end_src
+
+牧野が後ろで言う。
+
+「いいな」
+
+「何がですか？」
+
+「ログを、その場限りで消費しなかった。未来の人間が読む形にした」
+
+ミオは少し照れた。
+
+たしかに、前なら解けた瞬間に終わっていた。でも今は違う。
+
+エラー。仮説。確認。結論。次の手順。
+
+全部が残っている。
+
+八代がその org を見て言った。
+
+「これ、次わたしでも見れば分かりそうです」
+
+「それが一番いい」
+
+ミオは思った。
+
+できる人とは、全部を頭で覚えている人ではない。分からなかったことを、次に分かる形で残せる人なのかもしれない。
+
+* 第五章 PostgreSQLは枯れている、だから強い
+
+金曜日の朝。
+
+ログイン画面が遅い問題が、また上がってきた。
+
+#+begin_example
+朝だけログインが重い
+一部ユーザーで dashboard 表示が 3 秒以上かかる
+Sentry にエラーはない
+DB CPU が少し上がっている
+#+end_example
+
+ミオは嫌な汗をかいた。
+
+フロントの表示の問題だと思っていた。でも今度は DB っぽい。
+
+「DB、まだ怖いんですよね」
+
+「PostgreSQL は怖くない」
+
+牧野は言った。
+
+「ただし、何も聞かずに眺めると無言だ」
+
+「DB に聞く？」
+
+「実行計画を聞く」
+
+ミオは org に調査メモを作る。
+
+#+begin_src org
+* ログイン遅延調査
+** 事象
+- 朝のログイン時に dashboard 表示が遅い
+- 一部ユーザーで 3 秒以上
+- DB CPU が上がっている
+
+** 見るもの
+- slow query
+- EXPLAIN ANALYZE
+- index
+#+end_src
+
+slow query に出ていた SQL はこれだった。
+
+#+begin_src sql
+SELECT *
+FROM sessions
+WHERE user_id = $1
+ORDER BY created_at DESC
+LIMIT 1;
+#+end_src
+
+「普通に見える」
+
+「普通に見えるクエリほど実行計画を見る」
+
+牧野は淡々と言った。
+
+ミオは dev DB で値を入れて実行する。
+
+#+begin_src sql
+EXPLAIN ANALYZE
+SELECT *
+FROM sessions
+WHERE user_id = 123
+ORDER BY created_at DESC
+LIMIT 1;
+#+end_src
+
+結果の中に、見慣れない言葉が出る。
+
+#+begin_example
+Sort
+  Sort Key: created_at DESC
+  -> Bitmap Heap Scan on sessions
+     Recheck Cond: (user_id = 123)
+#+end_example
+
+ミオは眉を寄せた。
+
+「Sort してる？」
+
+「そう。user_id で絞った後、created_at で並べている」
+
+「LIMIT 1 なのに？」
+
+「最新一件が欲しいだけでも、取り方が悪いと並べ替えが要る」
+
+「うわ、地味に重いやつ」
+
+牧野はホワイトボードに書いた。
+
+#+begin_src sql
+CREATE INDEX sessions_user_id_created_at_idx
+ON sessions (user_id, created_at DESC);
+#+end_src
+
+「この index があると、user_id ごとに created_at の降順で取りやすくなる」
+
+「PostgreSQL って、こういうのちゃんと答えてくれるんですね」
+
+「聞けば答える」
+
+「聞き方が EXPLAIN ANALYZE」
+
+「そうだ」
+
+ミオは migration を作り、PR を出した。ただコードだけではなく、org の調査メモも貼る。
+
+#+begin_src org
+** 原因
+sessions 取得時に user_id で絞った後、created_at DESC の sort が発生していた。
+
+** 対応
+(user_id, created_at DESC) の複合 index を追加。
+
+** 期待
+最新 session 取得が index scan で済む。
+#+end_src
+
+翌朝、Datadog のグラフは下がった。ログイン API の p95 latency が改善している。
+
+沢渡が言った。
+
+「ミオちゃん、PostgreSQL で殴れるようになってきたね」
+
+「殴るというか、話を聞いたら答えてくれました」
+
+「DB と会話するギャル、強いな」
+
+ミオは笑ったが、内心はかなり嬉しかった。
+
+PostgreSQL は派手な技術ではない。でも、そこにあるデータを支えている。枯れている。だから情報が多い。だから現場で強い。
+
+そして Emacs の org 文書には、調査の全部が残っている。
+
+SQL。実行計画。仮説。対応。結果。
+
+それはただのメモではない。未来の自分が、同じ問題をもっと速く解くための地図だった。
+
+* 第六章 GitHub Actionsの赤いバツ
+
+午後、GitHub の PR に赤いバツが付いた。
+
+CI failed.
+
+ミオは反射的に胃が縮むのを感じた。
+
+赤いバツは嫌いだ。自分の書いたコードが、全世界に向けて「ダメです」と言われている気がする。
+
+「落ちた……」
+
+「落ちたな」
+
+牧野は平然としている。
+
+「なんでそんな落ち着いてるんですか」
+
+「CI は人格否定をしていない」
+
+「でも赤い」
+
+「信号も赤い。止まれというだけだ」
+
+「たとえ話が地味に腹立つ」
+
+「なら止まれ」
+
+ミオは深呼吸した。
+
+まず org に切る。
+
+#+begin_src org
+* CI 失敗調査
+** 事象
+- GitHub Actions の test job が失敗
+
+** 確認すること
+- どの job か
+- どの command か
+- エラー本文
+- ローカル再現
+- 差分との関係
+#+end_src
+
+GitHub Actions のログを見る。
+
+#+begin_example
+TypeError: Cannot read properties of undefined (reading 'email')
+#+end_example
+
+「undefined の email」
+
+「よくある」
+
+「よくあるんですか？」
+
+「よくある。だから慌てなくていい」
+
+該当テストを開く。
+
+#+begin_src typescript
+const user = createMockUser()
+expect(user.email).toContain("@")
+#+end_src
+
+mock を見る。
+
+#+begin_src typescript
+const createMockUser = () => ({
+  id: "user_1",
+  name: "Mio",
+})
+#+end_src
+
+「email がない」
+
+「原因は？」
+
+「mock user に email がないのに、test で email を読んでる」
+
+「対応は？」
+
+#+begin_src typescript
+const createMockUser = () => ({
+  id: "user_1",
+  name: "Mio",
+  email: "mio@example.com",
+})
+#+end_src
+
+「それだけでも通る。だが再発する」
+
+「型で縛る？」
+
+牧野が少し笑う。
+
+「いい」
+
+ミオは TypeScript の `satisfies` を使った。
+
+#+begin_src typescript
+type User = {
+  id: string
+  name: string
+  email: string
+}
+
+const createMockUser = () =>
+  ({
+    id: "user_1",
+    name: "Mio",
+    email: "mio@example.com",
+  }) satisfies User
+#+end_src
+
+「これで User に必要な field が欠けたら型で怒られる」
+
+「そうだ。人間は忘れる。型は忘れない」
+
+ミオは org にまとめる。
+
+#+begin_src org
+** 原因
+mock user に email がなく、email を読むテストで undefined になっていた。
+
+** 対応
+- mock に email を追加
+- User 型を satisfies で満たすようにして、欠落を型で検出できるようにした
+
+** 学び
+CI は怒っているのではなく、再現可能な失敗を教えている。
+#+end_src
+
+ローカルで実行。
+
+#+begin_src sh
+npm test
+#+end_src
+
+通る。
+
+Magit で変更を確認する。
+
+`s` で stage。`c c` で commit。
+
+#+begin_example
+Fix user mock type in login tests
+#+end_example
+
+`P p` で push。
+
+GitHub の赤いバツが、緑のチェックに変わった。
+
+ミオは画面を見つめた。
+
+「緑、こんなにかわいい色でしたっけ」
+
+「疲れてるな」
+
+「でも、分かった気がします。CI が落ちると怖いのは、何を見ればいいか分からないからですね」
+
+「そうだ。見る順番があれば怖くない」
+
+「job、command、error、local repro、diff」
+
+「それでいい」
+
+ミオは自分の org ファイルを見た。
+
+そこには、赤いバツを緑に変えるまでの道筋が残っていた。
+
+次はもっと速くできる。
+
+その実感が、彼女を少しだけ強くした。
+
+* 第七章 Notionより速いメモ、Slackより静かな思考
+
+週が明けると、ミオには新しい悩みができていた。
+
+仕事そのものではない。
+
+メモの置き場だ。
+
+Slack で来たアイデア。Notion にある仕様。GitHub のコメント。自分の調査メモ。会議の議事録。ローカルで試した SQL。ターミナルに流れたエラー。
+
+全部が別々の場所にある。
+
+「探してる時間、長くない？」
+
+ミオは昼休み、パンをかじりながら言った。
+
+「長いな」
+
+牧野は即答した。
+
+「Notion に全部書けばいいんですかね」
+
+「共有するものは Notion でいい」
+
+「じゃあ全部 Notion？」
+
+「違う」
+
+「違うんだ」
+
+「Notion は共有の会議室だ。Emacs は自分の作業部屋だ」
+
+ミオは少し考えた。
+
+共有の会議室。自分の作業部屋。
+
+たしかに Notion に書こうとすると、少し綺麗にしようとしてしまう。見出しを整える。人が読めるように書く。間違ったことを書いてはいけない気がする。
+
+その結果、書き始めが遅くなる。
+
+「Emacs は汚していい」
+
+牧野は言った。
+
+「途中の考え、雑な仮説、変なメモ、あとで消す言葉。全部置ける」
+
+「誰にも見せないから？」
+
+「そう。考える場所は、最初から綺麗である必要がない」
+
+ミオは org-capture を設定した。
+
+#+begin_src emacs-lisp
+(setq org-capture-templates
+      '(("t" "Task" entry
+         (file "~/org/inbox.org")
+         "* TODO %?\n  %U\n")
+        ("m" "Memo" entry
+         (file "~/org/memo.org")
+         "* %?\n  %U\n")))
+#+end_src
+
+それからは、思いついたら即 capture した。
+
+#+begin_src org
+* TODO 料金画面のCTA文言を確認
+  [2026-05-10 Sun 10:14]
+
+* Memo
+** free plan の説明が長すぎるかも
+   [2026-05-10 Sun 10:18]
+
+** 解約導線の文言、怖く見える
+   [2026-05-10 Sun 10:31]
+#+end_src
+
+Slack の通知を見て、すぐ返信しない。まず Inbox に入れる。
+
+会議中に思いついたことを、すぐ結論にしない。Memo に入れる。
+
+昼休みに、Inbox を見る。タスクにするもの。消すもの。Notion に昇格させるもの。PR コメントにするもの。
+
+分類は後でいい。まず捕まえる。
+
+その快感は、ミオには新しかった。
+
+「これ、頭の中の未読が減る感じします」
+
+「いい表現だ」
+
+「Slack の未読より、頭の中の未読の方がしんどい」
+
+「だから capture する」
+
+「Emacs、メンタルにも効くじゃん」
+
+「薬機法に引っかかる言い方はするな」
+
+「真面目か」
+
+午後、ミオは Notion に仕様メモを共有した。そのメモは、最初から Notion で書いたものではなかった。
+
+Emacs の荒いメモ。org の見出し。一度書いた仮説。消した案。残した結論。
+
+それらを整えて、共有用にしたものだった。
+
+Emacs は舞台裏。Notion は舞台。
+
+その違いが分かると、ミオの仕事はまた少し楽になった。
+
+* 第八章 文学プログラミングで、手順書が生き返る
+
+会社のリリース手順書は、怪物だった。
+
+Notion の奥深くにある。更新日は半年前。スクリーンショットは古い。コマンドは一部違う。どの手順がまだ必要で、どれが不要なのか分からない。
+
+でも事故ると、誰かが言う。
+
+「手順書に書いてあるよ」
+
+ミオはその手順書を見て、深いため息をついた。
+
+「これ、死んでません？」
+
+沢渡が肩をすくめる。
+
+「死んでるけど、消すと怒られる」
+
+「ゾンビ手順書じゃん」
+
+「だいたいそう」
+
+ミオは牧野を見た。
+
+「作り直したいです」
+
+「やれ」
+
+「そんな簡単に」
+
+「簡単ではない。だが必要だ」
+
+牧野は org-mode で文学プログラミングを説明した。
+
+「文学プログラミングって、名前が強すぎて難しく聞こえる」
+
+「実際にやることは単純だ」
+
+「文章とコードを一緒に置く、ですよね」
+
+「そう。なぜやるかを文章で書き、どうやるかをコードで書く」
+
+ミオは新しい org 文書を作った。
+
+#+begin_src org
+* Release v2.8.0
+
+このリリースでは、料金画面の改善とログイン処理の高速化を反映する。
+
+対象:
+- Next.js frontend
+- Node.js API
+- PostgreSQL migration
+- Redis worker
+
+** 1. 依存関係の更新
+
+ローカルの依存関係を lockfile に従って入れ直す。
+
+#+begin_src shell
+npm ci
+#+end_src
+
+** 2. テスト
+
+単体テストを実行する。
+
+#+begin_src shell
+npm test
+#+end_src
+
+** 3. DB migration 確認
+
+本番適用前に migration の状態を確認する。
+
+#+begin_src shell
+npm run db:migrate:status
+#+end_src
+#+end_src
+
+「文章があると安心しますね」
+
+「コマンドだけだと、なぜそれをやるのか消える」
+
+「でも文章だけだと、実行できない」
+
+「だから両方置く」
+
+ミオはさらに確認項目を追加する。
+
+#+begin_src org
+** 確認項目
+- [ ] ログインできる
+- [ ] 料金画面が表示される
+- [ ] 決済リンクが正しい
+- [ ] Sentry に新規エラーが出ていない
+- [ ] Datadog の p95 latency が悪化していない
+- [ ] Redis worker が正常に処理している
+#+end_src
+
+八代が覗き込む。
+
+「これ、手順書なのに、その場でコマンドも動くんですか？」
+
+「動く」
+
+「手順書が生きてる……」
+
+ミオはその表現が気に入った。
+
+死んだ手順書。生きた手順書。
+
+違いは明確だった。
+
+死んだ手順書は、読むだけ。しかも古くなる。誰も信用しない。
+
+生きた手順書は、理由とコマンドが一緒にある。実行できる。結果も残せる。更新もしやすい。
+
+リリース当日。
+
+ミオは org 文書を開き、手順を一つずつ進めた。
+
+コードブロックを実行する。結果を見る。チェックを付ける。次へ行く。
+
+#+begin_src org
+** 進行
+- [X] npm ci
+- [X] npm test
+- [X] db:migrate:status
+- [X] db:migrate
+- [X] smoke test
+- [X] Sentry 確認
+- [X] Datadog 確認
+#+end_src
+
+事故は起きなかった。
+
+部長が言った。
+
+「この手順書、次回から標準にしよう」
+
+ミオは思わずガッツポーズをした。
+
+「よっしゃ」
+
+沢渡が笑う。
+
+「手順書で喜ぶ新人、初めて見た」
+
+「生き返らせたんで」
+
+牧野は遠くで静かに笑っていた。
+
+ミオは思った。
+
+文章とコードを一緒に置く。それだけで、手順書は未来の自分を助ける道具になる。
+
+これは地味だ。でも、強い。
+
+* 第九章 深夜一時、Redisが眠らない
+
+金曜の夜。
+
+なぜ本番障害は金曜の夜に来るのか。ミオはまだその答えを知らない。
+
+だが、その日も来た。
+
+Slack の incident チャンネルが赤く光る。
+
+#+begin_example
+通知が重複送信されています
+Redis queue が増え続けています
+worker が retry しています
+Sentry に timeout が出ています
+#+end_example
+
+ミオの心臓が跳ねた。
+
+本番。通知。重複。ユーザー影響。
+
+頭の中で、嫌な単語が回る。
+
+「ミオ、いけるか」
+
+沢渡が聞いた。
+
+怖い。
+
+そう言いそうになった。
+
+だが、牧野が横に立っていた。
+
+「まず、見出し」
+
+ミオは Emacs を開いた。指が少し震えている。
+
+#+begin_src org
+* incident: 通知ジョブ多重実行
+** 事象
+** 影響
+** 仮説
+** 確認
+** 対応
+** 共有文
+#+end_src
+
+それだけで、少し息ができた。
+
+「事象」
+
+#+begin_src org
+** 事象
+- 同一ユーザーに通知が複数回送信されている
+- Redis queue の retry が増えている
+- worker log に timeout が出ている
+#+end_src
+
+「影響」
+
+#+begin_src org
+** 影響
+- 一部ユーザーに重複通知
+- 決済処理には影響なし
+- データ削除や漏えいは確認なし
+#+end_src
+
+「仮説」
+
+#+begin_src org
+** 仮説
+- 外部通知API timeout 後、実際には送信済みだがアプリ側では失敗扱い
+- retry により同じ通知が再送されている
+- notification_id に対する冪等性が不足している
+#+end_src
+
+牧野は言った。
+
+「いい。怖い時ほど、仮説を雑にでも書け」
+
+「雑でいいんですか」
+
+「頭の中で怖がるより、雑な仮説の方が百倍ましだ」
+
+ミオは確認コマンドを書く。
+
+#+begin_src org
+#+begin_src shell
+redis-cli llen notification_queue
+#+end_src
+
+#+begin_src sql
+SELECT user_id, notification_id, count(*)
+FROM notification_logs
+GROUP BY user_id, notification_id
+HAVING count(*) > 1;
+#+end_src
+#+end_src
+
+結果を貼る。重複している notification_id が見える。
+
+原因は、ほぼ仮説通りだった。
+
+外部 API が timeout した。しかし実際には通知は送られていた。アプリは失敗扱いにして retry した。送信済み判定が後段にあり、冪等性がなかった。
+
+「通知前に unique key を確保する必要があります」
+
+ミオの声は、思ったより落ち着いていた。
+
+「暫定対応は？」
+
+「queue を止めます。重複対象を確認します。retry 条件を絞ります。恒久対応は notification_id の unique 制約と送信前の状態管理」
+
+「いい」
+
+ミオは共有文を書く。
+
+#+begin_example
+通知ジョブの retry により、一部ユーザーへ重複通知が発生しました。
+決済・データ保存への影響はありません。
+暫定対応として queue を停止し、重複対象を確認後、再送条件を制限します。
+恒久対応として通知処理の冪等性を担保する修正を行います。
+#+end_example
+
+Slack に貼る。
+
+反応が返ってくる。
+
+#+begin_example
+助かる
+整理ありがとう
+判断しやすい
+#+end_example
+
+深夜一時三十二分。incident は収束した。
+
+ミオは椅子にもたれた。
+
+全身が重い。指先が少し冷たい。でも、頭の中は不思議と静かだった。
+
+牧野が言った。
+
+「無双してたな」
+
+ミオは疲れた顔で笑った。
+
+「怖かったですけどね」
+
+「怖くていい」
+
+「いいんですか」
+
+「怖い時に、怖いまま手順に落とせるのが強い」
+
+ミオは incident の org 文書を保存した。
+
+そこには、恐怖がそのまま残っていない。事象、影響、仮説、確認、対応、共有文として残っている。
+
+怖さは消えたわけではない。形を変えたのだ。
+
+それが、Emacs で戦うということなのかもしれなかった。
+
+#+CAPTION: 挿絵：小悪魔ギャル新人エンジニア、Emacsで無双する
+[[file:illust2.png]]
+
+* 第十章 新人は、次の新人に黒い画面を開く
+
+翌週、新しいインターンの八代ひなが正式にチームへ入った。
+
+ターミナルが怖い。Git が怖い。Docker が怖い。PR にコメントするのが怖い。
+
+ミオは、その気持ちが痛いほど分かった。
+
+「天城さん、何から覚えればいいですか？」
+
+八代は不安そうに聞いた。
+
+少し前のミオなら、こう答えたかもしれない。
+
+TypeScript。React。Git。Docker。SQL。HTTP。Linux。
+
+全部大事だ。でも、それを一度に言われたら人は潰れる。
+
+ミオは Emacs を開いた。
+
+#+begin_src org
+* Inbox
+#+end_src
+
+「まず、ここ」
+
+八代は瞬きをした。
+
+「これだけですか？」
+
+「最初はこれだけ」
+
+「もっとプログラミングっぽいことじゃなくて？」
+
+「プログラミングっぽいことを始める前に、頭の中を置く場所が要る」
+
+ミオは続ける。
+
+「分からないことを全部書いて」
+
+八代は戸惑いながら打つ。
+
+#+begin_src org
+* Inbox
+** TODO Git の branch が分からない
+** TODO PR の作り方が分からない
+** TODO Docker のエラーが怖い
+** TODO TypeScript の型エラーが読めない
+** TODO 何を質問していいか分からない
+#+end_src
+
+最後の一行を見て、ミオは少し胸が痛くなった。
+
+何を質問していいか分からない。
+
+それは本当に苦しい。分からないことが分からない状態。新人が一番孤独になる場所。
+
+「これ、すごく大事」
+
+ミオは言った。
+
+「分からないことが分からない、も TODO にしていいんですか？」
+
+「いい。むしろ書かないとずっと頭の中で暴れる」
+
+牧野が遠くから見ている。
+
+ミオは、彼から教わったことを、少し自分の言葉に変えて言った。
+
+「仕事はね、いきなり倒そうとすると強い。でも見出しにすると弱くなる。TODO にすると動かせる。表にすると比べられる。コードブロックにすると実行できる。Magit に入れると Git の状態が見える」
+
+八代は真剣に聞いていた。
+
+「Emacs って、そんなに何でもできるんですか？」
+
+「何でもできる、って言うと嘘っぽいけど」
+
+ミオは少し笑った。
+
+「何でも置ける。そこが強い」
+
+「置ける」
+
+「そう。Slack は会話の場所。GitHub はレビューの場所。Notion は共有の場所。ターミナルは実行の場所。でも、自分の考え途中を全部置ける場所って、意外とない」
+
+八代は Emacs の黒い画面を見た。
+
+「ここが、その場所？」
+
+「うん。バッファを開けば、世界がちょっと静かになる」
+
+ミオは `M-x magit-status` も見せた。
+
+「Git はコマンドラインだけでやると、最初はつらい。branch 切る時も、add する時も、commit する時も、push する時も、いちいちコマンドを思い出す」
+
+#+begin_src sh
+git switch -c feature/foo
+git add src/foo.ts
+git commit -m "Add foo"
+git push -u origin feature/foo
+#+end_src
+
+「でも Magit なら、状態を見ながら、一文字で操作できる」
+
+#+begin_example
+b b  新しいブランチ
+s    stage
+u    unstage
+c c  commit
+P p  push
+#+end_example
+
+八代の目が丸くなった。
+
+「一文字？」
+
+「そう。Git の意味は覚える。でも毎回長いコマンドを手で打たなくていい」
+
+「それ、めちゃくちゃ助かります」
+
+「でしょ」
+
+ミオは少しだけ小悪魔みたいに笑った。
+
+「伝説のツールだからね」
+
+遠くで牧野が言った。
+
+「大げさだ」
+
+「ラノベなので」
+
+「ここは会社だ」
+
+「でもタイトルはもう決まってます」
+
+「何だ」
+
+ミオは堂々と言った。
+
+「新人エンジニア、オッサン無双エンジニアから伝説のツール Emacs を学び無双する」
+
+牧野は無言でコーヒーを飲んだ。
+
+沢渡が吹き出した。
+
+八代は笑った。
+
+その日、Emacs の黒い画面の前に、また一人、新しいユーザーが座った。
+
+* 終章 Emacsは古い。でも、混乱はもっと古い
+
+Emacs は新しい道具ではない。
+
+だが、混乱はもっと古い。
+
+人間はいつも、情報に追われている。
+
+やることが多い。通知が多い。会議が多い。ログが長い。コマンドが怖い。Git が分からない。DB が遅い。CI が落ちる。本番が燃える。質問したいのに、何を質問すればいいか分からない。
+
+Emacs は、それを全部消してくれる魔法ではない。
+
+でも、置き場所をくれる。
+
+Inbox。TODO。Agenda。org-table。org-babel。Magit。vterm。literate programming。
+
+メモ、コード、ログ、SQL、コマンド、結果、手順、感情。それらを同じ作業台に置ける。
+
+ミオはもう、Emacs を「古いエディタ」とは思っていなかった。
+
+それは、現代の仕事を受け止めるための、静かな基地だった。
+
+今日も Slack は鳴る。GitHub は赤くなる。Docker はログを吐く。PostgreSQL は実行計画を返す。Redis は眠らない。TypeScript は型エラーを出す。人間は迷う。
+
+だから、ミオはバッファを開く。
+
+#+begin_src org
+* Inbox
+#+end_src
+
+そして笑う。
+
+「さあ、今日の世界も整えよっか」
+
+* あとがき
+
+この改訂版では、初心者が「何に困っているのか」を厚めに描いた。
+
+特に Magit については、単に「速い」とは書かないようにした。
+
+コマンドラインで Git を使うと、初心者は何度も迷う。
+
+- `git switch -c` だっけ、`git checkout -b` だっけ
+- `git add .` で全部入れていいのか
+- `git commit -am` は untracked file を含まないのか
+- push 先 upstream はどうするのか
+- 今 staged なのか unstaged なのか
+- branch はどこなのか
+
+Magit は、それらを画面上の状態として見せる。
+
+そして、
+
+#+begin_example
+b b  branch
+s    stage
+u    unstage
+c c  commit
+P p  push
+F p  pull
+l l  log
+d d  diff
+#+end_example
+
+のように、キーボード操作で進められる。
+
+速い理由は、一文字で操作できるからだけではない。
+
+迷う時間が減るから速い。状態が見えるから速い。長いコマンドを手で打たなくていいから速い。commit message を Emacs のバッファで落ち着いて書けるから速い。
+
+それが、初心者にとっての Magit の強さだ。
+
+また、org-mode についても、単なる TODO 管理ではなく、以下の役割を物語に入れた。
+
+- 頭の中の混乱を Inbox に出す
+- TODO に状態を付ける
+- agenda で今日を見る
+- エラー調査を「事象・仮説・確認・結論」にする
+- org-table でデータを整える
+- org-babel でコードや SQL や shell を実行する
+- 文学プログラミングで手順書を生きた文書にする
+- incident 対応をバッファ内で構造化する
+
+Emacs の魅力は、全部を Emacs だけでやることではない。
+
+Slack、GitHub、Notion、Docker、PostgreSQL、Redis、TypeScript、GitHub Actions。そうした現代的なツールの真ん中に、自分だけの作業台を作ることだ。
+
+空のバッファに、まずこう書く。
+
+#+begin_src org
+* Inbox
+#+end_src
+
+そこから、世界は少しずつ整っていく。
