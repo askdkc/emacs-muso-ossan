@@ -1,5 +1,10 @@
 * Emacsの良さを伝えるラノベ
+
 新人エンジニア、オッサン無双エンジニアから伝説のツールEmacsを学び無双する
+
+#+CAPTION: おっさんエンジニアとEmacs
+#+ATTR_HTML: :width 300px :style max-width:300px;
+[[./image.png]]
 
 ** OpenAIのChatGPT 5.5で作成
 
