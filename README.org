@@ -3,6 +3,7 @@
 新人エンジニア、オッサン無双エンジニアから伝説のツールEmacsを学び無双する
 
 - [[https://github.com/askdkc/emacs-muso-ossan/raw/refs/heads/main/emacs_light_novel.epub][Epub形式になってますのでダウンロードして読んでください]]
+- 本文は [[./emacs_light_novel_maintext.org][emacs_light_novel_maintext.org]] というOrgファイルにしてあります
 
 #+CAPTION: おっさんエンジニアとEmacs
 #+ATTR_HTML: :width 300px :style max-width:300px;
